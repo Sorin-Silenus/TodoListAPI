@@ -19,7 +19,7 @@ function renderTodos(todos) {
     return;
   }
 
-  list.innerHTML = todos.map(todo => `
+  list.innerHTML = todos.map((todo, index) => `
     <div class="todo-item ${todo.done ? 'done' : ''}" id="todo-${todo.id}">
       <input
         type="checkbox"
@@ -27,7 +27,7 @@ function renderTodos(todos) {
         onchange="toggleDone(${todo.id}, this.checked)"
       />
       <span class="todo-task">${escapeHtml(todo.task)}</span>
-      <span class="todo-id">#${todo.id}</span>
+      <span class="todo-id">#${index + 1}</span>
       <button class="delete-btn" onclick="deleteTodo(${todo.id})" title="Delete">✕</button>
     </div>
   `).join('');

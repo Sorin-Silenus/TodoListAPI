@@ -36,10 +36,4 @@ async def delete_todo(todo_id: int):
         raise HTTPException(status_code=404, detail="Todo not found")
     await Todo.filter(id=todo_id).delete()
 
-    remaining = await Todo.all().count()
-    if remaining == 0:
-        await Tortoise.get_connection("default").execute_query(
-            "DELETE FROM sqlite_sequence WHERE name='todo'"
-        )
-
     return "Todo deleted successfully"
