@@ -3,6 +3,7 @@
 from fastapi import FastAPI
 from api.routes.todo import todo_router
 from tortoise.contrib.fastapi import register_tortoise
+from fastapi.middleware.cors import CORSMiddleware
 
 app = FastAPI()
 app.include_router(todo_router)
@@ -12,6 +13,13 @@ register_tortoise(
     modules={"models": ["api.models.todo"]},
     generate_schemas=True,
     add_exception_handlers=True,
+)
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_methods=["*"],
+    allow_headers=["*"],
 )
 
 

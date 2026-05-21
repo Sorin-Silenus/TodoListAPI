@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Todo List</title>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>my<span>todos</span></h1>
+      <p>connected to localhost:8000</p>
+    </header>
+
+    <div class="error" id="error"></div>
+
+    <div class="add-form">
+      <input type="text" id="task-input" placeholder="what needs doing?" maxlength="255" />
+      <button onclick="addTodo()">+</button>
+    </div>
+
+    <p class="section-label">tasks</p>
+    <div class="todo-list" id="todo-list">
+      <div class="empty">Loading...</div>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
